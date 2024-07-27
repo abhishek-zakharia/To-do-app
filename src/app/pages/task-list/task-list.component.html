@@ -1,0 +1,60 @@
+<app-search (searchTextChanged)="onSearchTask($event)"></app-search>
+<div>
+  <table>
+    <tbody>
+      <tr>
+        <th>Task Id</th>
+        <th>Task Name</th>
+        <th>Task Description</th>
+        <th>Due Date</th>
+        <th>Creation Date</th>
+        <th>Completed</th>
+        <th>Completed On</th>
+        <th>Action</th>
+      </tr>
+      @for(task of filterTaskList;track task.id;){
+      <tr>
+        <td>
+          {{ $index+1 }}
+        </td>
+        <td>
+          {{ task.taskName }}
+        </td>
+        <td>
+          {{ task.taskDescription }}
+        </td>
+        <td>
+          {{ task.dueDate | date:'dd/MM/yyyy' }}
+        </td>
+        <td>
+          {{ task.created_at | date:'dd/MM/yyyy' }}
+        </td>
+        <td>
+          @if(task.isCompleted == 0){
+          {{ "Panding" }}
+          }@else{
+          {{ "Completed" }}
+          }
+        </td>
+        <td>
+          @if(task.isCompleted == 0){
+          {{ "--" }}
+          }@else{
+          {{ task.dueDate | date:'dd/MM/yyyy' }}
+          }
+        </td>
+        <td>
+          <button (click)="onEdit({'id':task.id})" mat-button [disabled]="task.isCompleted == 1">Edit</button>
+          <button (click)="onDelete(task.id)" mat-button>Delete</button>
+        </td>
+      </tr>
+      }
+      @empty
+      {
+      <tr>
+        <td colspan="10">No Data Found</td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,18 @@
+<div class="header">
+  <div><small>{{message}}</small></div>
+  <div class="header-right">
+    <a routerLink="home" mat-button routerLinkActive='active'>Home</a>
+    @if(this.authService.checkLogin() == false){
+    <a mat-button routerLink="login" routerLinkActive='active'>Login</a>
+    <a routerLink="register" mat-button routerLinkActive='active'>Registration</a>
+    }@else {
+    <a mat-button (click)="logout()" routerLinkActive='active'>Logout</a>
+    }
+    @if(this.authService.isAdmin() == false && this.authService.checkLogin() == true){
+    <a routerLink="tasks" mat-button routerLinkActive='active'>Tasks</a>
+    }
+    @if(this.authService.isAdmin() == true){
+    <a routerLink="users" mat-button routerLinkActive='active'>Users</a>
+    }
+  </div>
+</div>

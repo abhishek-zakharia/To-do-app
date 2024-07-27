@@ -1,0 +1,36 @@
+<div>
+  <table>
+    <tbody>
+      <tr>
+        <th>Index</th>
+        <th>User Name</th>
+        <th>User Email</th>
+        <th>Tasks</th>
+      </tr>
+      @for(user of userList;track user.id){
+      <tr>
+        <td>
+          {{ $index+1 }}
+        </td>
+        <td>
+          {{ user.name }}
+        </td>
+        <td>
+          {{ user.email }}
+        </td>
+        <td>
+          <button mat-button routerLink="/userTask/{{user.id}}">View Tasks</button>
+          <!-- <button mat-button routerLink="/usersTask/{{user.id}}">View Tasks</button> -->
+        </td>
+      </tr>
+      }
+      @empty
+      {
+      <tr>
+        <td colspan=" 10">No Data Found
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>

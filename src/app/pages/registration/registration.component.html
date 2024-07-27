@@ -1,0 +1,60 @@
+<div class="container">
+  <div>
+    <small>
+      {{ validationMessage }}</small>
+  </div>
+  <div>
+    <form id="form" [formGroup]="registerForm" (ngSubmit)="onRegister()">
+      <h1>Register</h1>
+      <div class="input-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" formControlName="name">
+        @if (registerForm.get('name').invalid && registerForm.get('name').touched) {
+        <small>*Name is Required Field</small>
+        }
+      </div>
+      <div class="input-group">
+        <label for="email">Email</label>
+        <input type="text" id="email" formControlName="email">
+        @if (registerForm.get('email').invalid && registerForm.get('email').touched) {
+        <small>*Email is Required Field</small>
+        }
+      </div>
+      <div class="input-group">
+        <label for="username">DOB</label>
+        <input type="date" id="dob" formControlName="dob">
+        @if (registerForm.get('dob').invalid && registerForm.get('dob').touched) {
+        <small>*DOB is Required Field</small>
+        }
+      </div>
+      <div class="genderDiv">
+        <label for="gender">Gender: </label>
+
+        <input type="radio" class="gender" id="male" value="male" formControlName="gender">
+        <label for="male">Male</label>
+
+        <input type="radio" class="gender" id="female" value="female" formControlName="gender">
+        <label for="female">Female</label>
+        <div class="error"></div>
+      </div>
+      <div formGroupName="passwords">
+        <div class="input-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" formControlName="password">
+          @if (registerForm.get('passwords.password')?.invalid && registerForm.get('passwords.password')?.touched) {
+          <small>*Password is Required Field</small>
+          }
+        </div>
+        <div class="input-group">
+          <label for="cpassword">Confirm Password</label>
+          <input type="password" id="cpassword" formControlName="cpassword">
+          @if (registerForm.get('passwords').errors?.['passwordMatch']) {
+          <small>*Password Doesn't Match</small>
+          }
+        </div>
+      </div>
+      <input type="submit" id="submit" value="Register" [disabled]="registerForm.invalid">
+      Already Registered?<a href="" style="text-decoration: none;" routerLink="login"> Login Here</a>
+    </form>
+  </div>
+</div>

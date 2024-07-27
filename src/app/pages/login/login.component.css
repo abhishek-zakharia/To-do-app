@@ -1,0 +1,89 @@
+body {
+  background-attachment: fixed;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+#form {
+  width: 400px;
+  margin: 20px auto 0 auto;
+  background-color: whitesmoke;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #4e76e6;
+}
+
+#submit {
+  background-color: #4e76e6;
+  color: white;
+  border: 1px solid #4e76e6;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 20px 0px;
+  cursor: pointer;
+  font-size: 20px;
+  width: 100%;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  /* margin-bottom: 15px; */
+}
+
+.input-group input {
+  border-radius: 5px;
+  font-size: 20px;
+  margin-top: 5px;
+  padding: 10px;
+}
+
+.genderDiv {
+  display: flex;
+  padding: 0px 0px 10px 0px;
+}
+
+.gender {
+  border-radius: 5px;
+  font-size: 20px;
+}
+
+.input-group input:focus {
+  outline: 0;
+}
+
+.input-group .error {
+  color: rgb(242, 18, 18);
+  font-size: 16px;
+  margin-top: 5px;
+}
+
+.input-group.success input {
+  border-color: #0cc477;
+}
+
+.input-group.error input {
+  border-color: rgb(206, 67, 67);
+}
+
+/* table */
+
+input.ng-invalid.ng-touched {
+  border: 3px solid red;
+}
+
+small {
+  color: red;
+  font-weight: bold;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}

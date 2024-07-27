@@ -1,0 +1,51 @@
+<div class="container">
+  <div>
+    <form id="form" [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+      @if(editMode == true){
+      <h1>Update Task</h1>
+      }@else {
+      <h1>Add Task</h1>
+      }
+      <div><small>{{message}}</small></div>
+      <div class="input-group">
+        <label for="title">Title</label>
+        <input type="text" id="title" formControlName="taskName">
+        @if (taskForm.get('taskName').invalid && taskForm.get('taskName').touched) {
+        <small>*Title is Required Field</small>
+        }
+      </div>
+      <div class="input-group">
+        <label for="description">Description</label>
+        <textarea name="description" id="description" cols="30" rows="10" formControlName="taskDescription"></textarea>
+        @if (taskForm.get('taskDescription').invalid && taskForm.get('taskDescription').touched) {
+        <small>*Description is Required Field</small>
+        }
+      </div>
+      <div class="input-group">
+        <label for="dueDate">Due Date</label>
+        <input type="date" id="dueDate" formControlName="dueDate">
+      </div>
+      @if(authService.isAdmin() == true){
+      <div class="input-group">
+        <label for="">Select User</label>
+        <select class="custom-select" formControlName="user">
+          @for(user of userList;track user.id){
+          <option [ngValue]="user.id">{{user.name}}</option>
+          }
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label for="dueDate">Change Status</label>
+        <label class="switch">
+          <input type="checkbox" name="taskStatus" formControlName="isCompleted" checked>
+          <span class="slider round"></span>
+        </label>
+      </div>
+      }
+      <input type="hidden" id="editDataId" formControlName="id">
+      <input type="submit" id="submit" [disabled]="taskForm.invalid" [value]="btnValue" mat-button>
+
+    </form>
+  </div>
+</div>

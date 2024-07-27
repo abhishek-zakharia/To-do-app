@@ -1,0 +1,27 @@
+<div class="container">
+  <div>
+    <form id="form" [formGroup]="loginForm" (ngSubmit)="onLogin()">
+      <h1>Login</h1>
+      <div class="input-group">
+        <small>{{ loginMsg }}</small>
+      </div>
+      <div class="input-group">
+        <label for="email">Email</label>
+        <input type="text" id="email" formControlName="email">
+        @if (loginForm.get('email').invalid && loginForm.get('email').touched) {
+        <small>*Email is Required Field</small>
+        }
+      </div>
+
+      <div class="input-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" formControlName="password">
+        @if (loginForm.get('password').invalid && loginForm.get('password').touched) {
+        <small>*Password is Required Field</small>
+        }
+      </div>
+
+      <input type="submit" id="submit" value="Login">
+    </form>
+  </div>
+</div>
